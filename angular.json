@@ -30,8 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles/themes/custom-theme.scss",
-              "src/styles.less"
+              "src/styles.less",
+              "src/styles/themes/custom-theme.scss"
             ],
             "scripts": []
           },
