@@ -1,0 +1,21 @@
+<mat-card class="contribution-card">
+  <div class="card-header">
+    <span>{{ tipo }}</span>
+    <mat-icon>chevron_right</mat-icon>
+  </div>
+
+  <div class="card-body">
+    <div class="info-row">
+      <p class="label">Valor da contribuição</p>
+      <strong>{{ valor }}</strong>
+    </div>
+
+    <ng-container *ngIf="percentual">
+      <div class="info-row">
+        <p class="label">Percentagem do salário</p>
+        <strong>{{ percentual }}</strong>
+      </div>
+    </ng-container>
+  </div>
+  <button mat-button color="primary" class="alterar-btn">ALTERAR CONTRIBUIÇÃO</button>
+</mat-card>

@@ -1,0 +1,43 @@
+@import '../../../styles/variables/colors.less';
+@import '../../../styles/variables/typography.less';
+
+.contribution-card {
+  padding: 1rem;
+  font-family: @font-family-base;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: @font-size-14;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: @font-weight-semibold;
+    color: @text-black;
+  }
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .label {
+      margin: 0;
+      color: @text-black;
+    }
+
+    strong {
+      font-weight: @font-weight-semibold;
+    }
+  }
+}
+  .alterar-btn {
+    align-self: flex-start;
+    padding: 0 69px;
+  }
+}
