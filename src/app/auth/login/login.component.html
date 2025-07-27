@@ -1,0 +1,42 @@
+<div class="login-wrapper">
+  <div class="login-box">
+
+
+    <h1 class="title">Boas-vindas ao Portal!</h1>
+    <p class="subtitle">
+      Para começar, qual seu email ou CPF?<br />
+      Precisamos desta confirmação para dar início ao seu acesso.
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Email ou CPF</mat-label>
+        <input matInput formControlName="cpfEmail" />
+        <mat-icon matSuffix *ngIf="form.get('cpfEmail')?.valid">check_circle_outline</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+        />
+<mat-icon matSuffix *ngIf="form.get('password')?.valid">check_circle_outline</mat-icon>
+
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="full-width" type="submit">
+        ACESSAR
+      </button>
+
+      <div class="footer-links">
+        <a href="#">Esqueceu a senha? <span>Acesse aqui</span></a>
+      </div>
+
+      <p class="version">Versão 0.0.1</p>
+    </form>
+  </div>
+
+  <div class="login-image"></div>
+</div>
