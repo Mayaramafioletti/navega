@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
@@ -11,14 +11,11 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
   styleUrls: ['./chart.component.less']
 })
 export class ChartComponent {
+   @Input() data: number[] = [];
   doughnutChartLabels: string[] = ['Contribuição mensal', 'Contribuição voluntária'];
   doughnutChartData: ChartConfiguration<'doughnut'>['data'] = {
     labels: this.doughnutChartLabels,
     datasets: [
-      {
-        data: [499999.99, 499999.99],
-        backgroundColor: ['#E22E6F', '#594CBE']
-      }
     ]
   };
 
@@ -31,4 +28,17 @@ export class ChartComponent {
       }
     }
   };
+ ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && this.data?.length) {
+      this.doughnutChartData = {
+        labels: this.doughnutChartLabels,
+        datasets: [
+          {
+            data: this.data,
+            backgroundColor: ['#E22E6F', '#594CBE']
+          }
+        ]
+      };
+    }
+  }
 }

@@ -10,7 +10,8 @@ export class AuthService {
     cpf: '987.987.987-99',
     password: '123456',
     name: 'Adimin User',
-    token: 'mocked-jwt-token'
+    token: 'mocked-jwt-token',
+    avatar: './../../assets/avatar.png'
   };
 
   login(cpfEmail: string, password: string): Observable<{ success: boolean; token?: string; name?: string }> {
@@ -18,6 +19,7 @@ export class AuthService {
                     password === this.mockUser.password;
 
     if (isValid) {
+      localStorage.setItem('token', JSON.stringify(this.mockUser.token));
       return of({
         success: true,
         token: this.mockUser.token,
@@ -27,5 +29,8 @@ export class AuthService {
 
     return of({ success: false });
   }
-
+getUserInfo() {
+  const user = localStorage.getItem('user');
+  return user ? JSON.parse(user) : null;
+}
 }

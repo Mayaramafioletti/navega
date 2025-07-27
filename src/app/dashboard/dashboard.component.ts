@@ -6,16 +6,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../core/auth.service';
+import { DashboardService } from '../core/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.less'],
   standalone: true,
-  imports: [ChartComponent, CardsComponent, MatListModule, MatIconModule,  RouterModule, CommonModule, MatButtonModule  ]
+  imports: [ChartComponent, CardsComponent, MatListModule, MatIconModule, RouterModule, CommonModule, MatButtonModule]
 })
 export class DashboardComponent {
-menuItems = [
+  user: any = null;
+  dashboardData: any = null;
+  menuItems = [
     {
       nome: 'Ver Extrato',
       icone: 'assets/icons/file-dollar.svg',
@@ -57,4 +61,18 @@ menuItems = [
       caminho: '/informacoes'
     }
   ];
+  constructor(private authService: AuthService, private dashboardService: DashboardService) {}
+
+  ngOnInit(): void {
+    this.user = this.authService.getUserInfo();
+console.log(this.user)
+    const token = localStorage.getItem('token');
+    console.log(token)
+    if (token) {
+      this.dashboardService.getDashboardData(token).subscribe(data => {
+        this.dashboardData = data;
+        console.log(data)
+      });
+    }
+  }
 }

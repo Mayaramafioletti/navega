@@ -13,10 +13,10 @@
 .header {
   background-color: #1e1e23;
   color: white;
-  padding: 8px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 24px 10%;
 
   .header-left {
     font-size: 14px;
@@ -32,11 +32,14 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin: 24px 10%;
+
 
     mat-icon {
       color: white;
     }
+  }
+   @media (max-width: 767px) {
+    display: none;
   }
 }
 
