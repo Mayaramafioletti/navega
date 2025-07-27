@@ -1,35 +1,100 @@
-
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
 
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat.core();
 
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$navega-primary: mat.define-palette(mat.$indigo-palette);
-$navega-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// Paleta primária personalizada (#1AAAB2)
+$navega-primary: mat.define-palette((
+  50:  #e0f7f9,
+  100: #b3ecf0,
+  200: #80e0e6,
+  300: #4dd3dc,
+  400: #26c9d5,
+  500: #1AAAB2,
+  600: #179aa1,
+  700: #148a91,
+  800: #117a80,
+  900: #0d5d66,
+  contrast: (
+    50:  #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff
+  )
+));
 
-// The warn palette is optional (defaults to red).
-$navega-warn: mat.define-palette(mat.$red-palette);
+// Paleta accent personalizada (#E22E6F)
+$navega-accent: mat.define-palette((
+  50:  #fde4eb,
+  100: #fbbbd1,
+  200: #f892b7,
+  300: #f5689c,
+  400: #f34088,
+  500: #E22E6F,
+  600: #cc2964,
+  700: #b62559,
+  800: #a01f4e,
+  900: #891a43,
+  contrast: (
+    50:  #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff
+  )
+));
 
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
+// Paleta de aviso personalizada (#f51d0e)
+$navega-warn: mat.define-palette((
+  50:  #fde0dc,
+  100: #f9bdbb,
+  200: #f69988,
+  300: #f36c60,
+  400: #f1453d,
+  500: #f51d0e,
+  600: #dc1a0d,
+  700: #c3170b,
+  800: #aa140a,
+  900: #911108,
+  contrast: (
+    50:  #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #fff,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff
+  )
+));
+// Define configuração de tipografia personalizada
+
+// $navega-typography: mat-typography-config((
+//   $font-family: 'Poppins',
+// ));
+
+
+// Tema claro baseado nas paletas acima
 $navega-theme: mat.define-light-theme((
   color: (
     primary: $navega-primary,
     accent: $navega-accent,
     warn: $navega-warn,
-  )
+  ),
+  //typography: $navega-typography,
 ));
 
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
+// Inclui todos os estilos dos componentes com base no tema
 @include mat.all-component-themes($navega-theme);
-
