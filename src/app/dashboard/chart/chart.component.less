@@ -1,0 +1,61 @@
+@import '../../../styles/variables/colors.less';
+@import '../../../styles/variables/typography.less';
+
+.chart-container {
+  max-width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.doughnut-wrapper {
+  position: relative;
+  width: 200px; // tamanho base
+  height: 200px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 250px;
+    height: 250px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.legenda {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 300px;
+  margin-inline: auto;
+
+  li {
+    margin: 5px 0;
+    font-size: 0.9rem;
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 8px;
+
+      &.pink {
+        background-color: #E22E6F;
+      }
+      &.purple {
+        background-color: #594CBE;
+      }
+    }
+  }
+}
+

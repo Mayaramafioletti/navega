@@ -1,0 +1,16 @@
+<div class="chart-container">
+  <h3>Total em contribuições</h3>
+  <p class="total">R$ 999.999,99</p>
+  <div class="doughnut-wrapper">
+    <canvas
+      baseChart
+      [data]="doughnutChartData"
+      [options]="chartOptions"
+      [type]="'doughnut'">
+    </canvas>
+  </div>
+  <ul class="legenda">
+    <li><span class="dot pink"></span> Contribuição mensal R$ 499.999,99</li>
+    <li><span class="dot purple"></span> Contribuição voluntária R$ 499.999,99</li>
+  </ul>
+</div>
