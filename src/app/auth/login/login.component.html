@@ -17,15 +17,13 @@
 
       <mat-form-field appearance="fill" class="full-width">
         <mat-label>Senha</mat-label>
-        <input
-          matInput
-          [type]="showPassword ? 'text' : 'password'"
-          formControlName="password"
-        />
-<mat-icon matSuffix *ngIf="form.get('password')?.valid">check_circle_outline</mat-icon>
+        <input matInput [type]="showPassword ? 'text' : 'password'" formControlName="password" />
+        <mat-icon matSuffix *ngIf="form.get('password')?.valid">check_circle_outline</mat-icon>
 
       </mat-form-field>
-
+      <div *ngIf="loginError" class="error-message">
+        CPF, e-mail ou senha inválidos. Tente novamente.
+      </div>
       <button mat-flat-button color="primary" class="full-width" type="submit">
         ACESSAR
       </button>
