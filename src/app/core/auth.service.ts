@@ -16,21 +16,30 @@ export class AuthService {
 
   login(cpfEmail: string, password: string): Observable<{ success: boolean; token?: string; name?: string }> {
     const isValid = (cpfEmail === this.mockUser.email || cpfEmail === this.mockUser.cpf) &&
-                    password === this.mockUser.password;
+      password === this.mockUser.password;
 
     if (isValid) {
       localStorage.setItem('token', JSON.stringify(this.mockUser.token));
-      return of({
-        success: true,
-        token: this.mockUser.token,
-        name: this.mockUser.name
-      });
+      if (isValid) {
+        localStorage.setItem('token', JSON.stringify(this.mockUser.token));
+        localStorage.setItem('user', JSON.stringify({
+          name: this.mockUser.name,
+          email: this.mockUser.email,
+          avatar: this.mockUser.avatar
+        }));
+        return of({
+          success: true,
+          token: this.mockUser.token,
+          name: this.mockUser.name
+        });
+      }
+
     }
 
     return of({ success: false });
   }
-getUserInfo() {
-  const user = localStorage.getItem('user');
-  return user ? JSON.parse(user) : null;
-}
+  getUserInfo() {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
 }
