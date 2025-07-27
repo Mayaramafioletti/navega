@@ -1,38 +1,41 @@
 <header class="header">
+  <div class="header-left">
+    <img src="URL_DA_FOTO_DO_USUÁRIO" class="avatar" alt="Avatar do usuário" />
+  </div>
+  <div class="header-actions">
+    <mat-icon>home</mat-icon>
+    <mat-icon>visibility</mat-icon>
+    <mat-icon>sync</mat-icon>
 
-<div class="header-actions">
-  <mat-icon>home</mat-icon>
-  <mat-icon>visibility</mat-icon>
-  <mat-icon>sync</mat-icon>
-  <img src="URL_DA_FOTO_DO_USUÁRIO" class="avatar" alt="Avatar do usuário" />
-</div>
+  </div>
 </header>
 <div class="body">
-  <div class="my-plan">
-    <span class="back-link">&lt; Meu Plano</span>
+  <div class="back-section">
+    <mat-icon>arrow_back</mat-icon>
+    <span>MEU PLANO</span>
   </div>
   <div class="dashboard-wrapper">
     <!-- Sidebar/Menu -->
     <div class="sidebar">
-    <div class="sidebar-header">
-      <img src="./../../assets/icons/perfil.svg" alt="perfil icone">
-      <h3>Meu plano</h3>
-      <p>O que você quer fazer?</p>
-    </div>
-    <mat-nav-list>
-   <ng-container *ngFor="let item of menuItems; let i = index">
-  <a mat-list-item [routerLink]="item.caminho" routerLinkActive="active" >
-    <div class="left-content">
-      <img [src]="item.icone" alt="{{ item.nome }} ícone" class="menu-icon" />
-      <span class="item-name">{{ item.nome }}</span>
-    </div>
-    <span class="arrow">&gt;</span>
-  </a>
-  <mat-divider class="divider" *ngIf="i < menuItems.length - 1"></mat-divider>
-</ng-container>
-  </mat-nav-list>
+      <div class="sidebar-header">
+        <img src="./../../assets/icons/perfil.svg" alt="perfil icone">
+        <h3>Meu plano</h3>
+        <p>O que você quer fazer?</p>
+      </div>
+      <mat-nav-list>
+        <ng-container *ngFor="let item of menuItems; let i = index">
+          <a mat-list-item [routerLink]="item.caminho" routerLinkActive="active">
+            <div class="left-content">
+              <img [src]="item.icone" alt="{{ item.nome }} ícone" class="menu-icon" />
+              <span class="item-name">{{ item.nome }}</span>
+            </div>
+            <span class="arrow">&gt;</span>
+          </a>
+          <mat-divider class="divider" *ngIf="i < menuItems.length - 1"></mat-divider>
+        </ng-container>
+      </mat-nav-list>
 
-  </div>
+    </div>
 
 
     <main class="content">
@@ -41,19 +44,9 @@
       </div>
 
       <div class="cards-section">
-        <app-cards
-          tipo="Contribuição mensal"
-          valor="R$ 500,00"
-          percentual="5%"
-          cor="red"
-        ></app-cards>
+        <app-cards tipo="Contribuição mensal" valor="R$ 500,00" percentual="5%" cor="red"></app-cards>
 
-        <app-cards
-          tipo="Contribuição voluntária"
-          valor="R$ 500,00"
-          percentual=""
-          cor="blue"
-        ></app-cards>
+        <app-cards tipo="Contribuição voluntária" valor="R$ 500,00" percentual="" cor="blue"></app-cards>
       </div>
 
       <button mat-flat-button color="primary" class="full-width action-btn">
