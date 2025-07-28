@@ -11,7 +11,8 @@
 <div class="body">
   <div class="back-section">
     <mat-icon>arrow_back</mat-icon>
-    <span>MEU PLANO</span>
+     <span *ngIf="!isMobile">MEU PLANO</span>
+  <span *ngIf="isMobile">CONTRIBUIÇÕES</span>
   </div>
   <div class="dashboard-wrapper">
     <!-- Sidebar/Menu -->

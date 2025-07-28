@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ChartComponent } from "./chart/chart.component";
-import { CardsComponent } from "./cards/cards.component";
+import { Component, HostListener } from '@angular/core';
+import { ChartComponent } from './chart/chart.component';
+import { CardsComponent } from './cards/cards.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
@@ -49,18 +49,30 @@ interface UserDashboardData {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.less'],
   standalone: true,
-  imports: [ChartComponent, CardsComponent, MatListModule, MatIconModule, RouterModule, CommonModule, MatButtonModule]
+  imports: [
+    ChartComponent,
+    CardsComponent,
+    MatListModule,
+    MatIconModule,
+    RouterModule,
+    CommonModule,
+    MatButtonModule,
+  ],
 })
 export class DashboardComponent {
   user: User | null = null;
   dashboardData: DashboardData | null = null;
   readonly menuItems: MenuItem[] = MENU_ITEMS;
+  isMobile = false;
+  constructor(
+    private authService: AuthService,
+    private dashboardService: DashboardService
+  ) {}
 
-  constructor(private authService: AuthService, private dashboardService: DashboardService) { }
-
- ngOnInit(): void {
+  ngOnInit(): void {
     this.loadUserInfo();
     this.loadDashboardData();
+    this.checkViewport();
   }
 
   private loadUserInfo(): void {
@@ -76,14 +88,53 @@ export class DashboardComponent {
       error: (err) => console.error('Erro ao carregar dados do dashboard', err),
     });
   }
+  @HostListener('window:resize')
+  onResize() {
+    this.checkViewport();
+  }
+  checkViewport() {
+    this.isMobile = window.innerWidth <= 768; // Defina o breakpoint para mobile
+  }
 }
 const MENU_ITEMS: MenuItem[] = [
-  { nome: 'Ver Extrato', icone: 'assets/icons/file-dollar.svg', caminho: '/extrato' },
-  { nome: 'Contribuição Mensal', icone: 'assets/icons/envelope-dollar.svg', caminho: '/dashboard' },
-  { nome: 'Contribuição Extra', icone: 'assets/icons/sack-dollar.svg', caminho: '/contribuicao-extra' },
-  { nome: 'Documentos', icone: 'assets/icons/file.svg', caminho: '/documentos' },
-  { nome: 'Regime de Tributação', icone: 'assets/icons/user-chart.svg', caminho: '/regime-tributacao' },
-  { nome: 'Solicitar Benefício', icone: 'assets/icons/comment-dollar.svg', caminho: '/solicitar-beneficio' },
-  { nome: 'Extrato Regressivo', icone: 'assets/icons/file-chart.svg', caminho: '/extrato-regressivo' },
-  { nome: 'Informações', icone: 'assets/icons/info.svg', caminho: '/informacoes' },
+  {
+    nome: 'Ver Extrato',
+    icone: 'assets/icons/file-dollar.svg',
+    caminho: '/extrato',
+  },
+  {
+    nome: 'Contribuição Mensal',
+    icone: 'assets/icons/envelope-dollar.svg',
+    caminho: '/dashboard',
+  },
+  {
+    nome: 'Contribuição Extra',
+    icone: 'assets/icons/sack-dollar.svg',
+    caminho: '/contribuicao-extra',
+  },
+  {
+    nome: 'Documentos',
+    icone: 'assets/icons/file.svg',
+    caminho: '/documentos',
+  },
+  {
+    nome: 'Regime de Tributação',
+    icone: 'assets/icons/user-chart.svg',
+    caminho: '/regime-tributacao',
+  },
+  {
+    nome: 'Solicitar Benefício',
+    icone: 'assets/icons/comment-dollar.svg',
+    caminho: '/solicitar-beneficio',
+  },
+  {
+    nome: 'Extrato Regressivo',
+    icone: 'assets/icons/file-chart.svg',
+    caminho: '/extrato-regressivo',
+  },
+  {
+    nome: 'Informações',
+    icone: 'assets/icons/info.svg',
+    caminho: '/informacoes',
+  },
 ];
