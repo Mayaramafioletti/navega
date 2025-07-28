@@ -1,6 +1,6 @@
 <div class="chart-container">
-  <h3>Total em contribuições</h3>
-  <p class="total">R$ {{ ((data?.[0] || 0) + (data?.[1] || 0))| number: '1.2-2' }}</p>
+  <p class="title-total">Total em contribuições</p>
+  <h3 class="total">R$ {{ ((data?.[0] || 0) + (data?.[1] || 0))| number: '1.2-2' }}</h3>
   <div class="doughnut-wrapper">
     <canvas
       baseChart
@@ -9,8 +9,16 @@
       [type]="'doughnut'">
     </canvas>
   </div>
-   <ul class="legenda">
-    <li><span class="dot pink"></span> Contribuição mensal R$ {{ (data?.[0] || 0) | number:'1.2-2' }}</li>
-    <li><span class="dot purple"></span> Contribuição voluntária R$ {{ (data?.[1] || 1) | number:'1.2-2' }}</li>
-  </ul>
+<ul class="legenda">
+  <li>
+   
+    <span class="label-title"> <span class="dot pink"></span>Contribuição mensal</span>
+    <span class="label-value">R$ {{ (data?.[0] || 0) | number:'1.2-2' }}</span>
+  </li>
+  <li>
+   
+    <span class="label-title"> <span class="dot purple"></span>Contribuição voluntária</span>
+    <span class="label-value">R$ {{ (data?.[1] || 0) | number:'1.2-2' }}</span>
+  </li>
+</ul>
 </div>

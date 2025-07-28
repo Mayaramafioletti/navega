@@ -1,12 +1,11 @@
 <header class="header">
-  <div class="header-left">
+  <div>
     <img [src]="user?.avatar" class="avatar" alt="Avatar do usuário" />
   </div>
   <div class="header-actions">
     <mat-icon>home</mat-icon>
     <mat-icon>visibility</mat-icon>
     <mat-icon>sync</mat-icon>
-
   </div>
 </header>
 <div class="body">
@@ -18,34 +17,50 @@
     <!-- Sidebar/Menu -->
     <div class="sidebar">
       <div class="sidebar-header">
-        <img src="./../../assets/icons/perfil.svg" alt="perfil icone">
+        <img src="./../../assets/icons/perfil.svg" alt="perfil icone" />
         <h3>Meu plano</h3>
         <p>O que você quer fazer?</p>
       </div>
       <mat-nav-list>
         <ng-container *ngFor="let item of menuItems; let i = index">
-          <a mat-list-item [routerLink]="item.caminho" routerLinkActive="active">
+          <a
+            mat-list-item
+            [routerLink]="item.caminho"
+            routerLinkActive="active"
+          >
             <div class="left-content">
-              <img [src]="item.icone" alt="{{ item.nome }} ícone" class="menu-icon" />
+              <img
+                [src]="item.icone"
+                alt="{{ item.nome }} ícone"
+                class="menu-icon"
+              />
               <span class="item-name">{{ item.nome }}</span>
             </div>
             <span class="arrow">&gt;</span>
           </a>
-          <mat-divider class="divider" *ngIf="i < menuItems.length - 1"></mat-divider>
+          <mat-divider
+            class="divider"
+            *ngIf="i < menuItems.length - 1"
+          ></mat-divider>
         </ng-container>
       </mat-nav-list>
-
     </div>
-
 
     <main class="content">
       <div class="chart-section">
-        <app-chart *ngIf="dashboardData?.chartData" [data]="dashboardData?.chartData"></app-chart>
+        <app-chart
+          *ngIf="dashboardData?.chartData"
+          [data]="dashboardData?.chartData"
+        ></app-chart>
       </div>
-
+      <mat-divider class="divider-section"></mat-divider>
       <div class="cards-section" *ngIf="dashboardData?.cards?.length">
-        <app-cards *ngFor="let card of dashboardData?.cards" [tipo]="card.tipo" [valor]="card.valor"
-          [percentual]="card.percentual">
+        <app-cards
+          *ngFor="let card of dashboardData?.cards"
+          [tipo]="card.tipo"
+          [valor]="card.valor"
+          [percentual]="card.percentual"
+        >
         </app-cards>
       </div>
 
@@ -54,5 +69,4 @@
       </button>
     </main>
   </div>
-
 </div>

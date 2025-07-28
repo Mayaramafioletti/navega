@@ -3,9 +3,13 @@
 
 .chart-container {
   max-width: 100%;
-  padding: 1rem;
+  padding: 1rem0;
   box-sizing: border-box;
   text-align: center;
+}
+.total {
+  font-weight: @font-weight-semibold;
+  font-size: @font-size-20;
 }
 
 .doughnut-wrapper {
@@ -34,13 +38,12 @@
   list-style: none;
   padding: 0;
   margin-top: 1rem;
-  text-align: left;
+  text-align: center;
   max-width: 300px;
   margin-inline: auto;
 
   li {
-    margin: 5px 0;
-    font-size: 0.9rem;
+     margin: 1rem 0;
 
     .dot {
       display: inline-block;
@@ -48,13 +51,24 @@
       height: 10px;
       border-radius: 50%;
       margin-right: 8px;
+      vertical-align: middle;
 
       &.pink {
-        background-color: #E22E6F;
+        background-color: @color-pink;
       }
       &.purple {
-        background-color: #594CBE;
+        background-color: @color-purple;
       }
+    }
+    span.label-title {
+      font-size: 0.9rem;
+      display: block;
+    }
+
+    span.label-value {
+      font-weight: @font-weight-semibold;
+      display: block;
+      margin-top: 0.2rem;
     }
   }
 }

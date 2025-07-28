@@ -79,7 +79,7 @@ export class DashboardComponent {
 }
 const MENU_ITEMS: MenuItem[] = [
   { nome: 'Ver Extrato', icone: 'assets/icons/file-dollar.svg', caminho: '/extrato' },
-  { nome: 'Contribuição Mensal', icone: 'assets/icons/envelope-dollar.svg', caminho: '/contribuicao-mensal' },
+  { nome: 'Contribuição Mensal', icone: 'assets/icons/envelope-dollar.svg', caminho: '/dashboard' },
   { nome: 'Contribuição Extra', icone: 'assets/icons/sack-dollar.svg', caminho: '/contribuicao-extra' },
   { nome: 'Documentos', icone: 'assets/icons/file.svg', caminho: '/documentos' },
   { nome: 'Regime de Tributação', icone: 'assets/icons/user-chart.svg', caminho: '/regime-tributacao' },
