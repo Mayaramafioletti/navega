@@ -1,5 +1,5 @@
-@import '../../../styles/variables/colors.less';
-@import '../../../styles/variables/typography.less';
+@import "../../../styles/variables/colors.less";
+@import "../../../styles/variables/typography.less";
 
 .login-wrapper {
   display: flex;
@@ -61,26 +61,28 @@
 }
 .footer-links {
   text-align: center;
-  font-size: @font-size-12;
+  font-size: @font-size-14;
   margin-top: 1rem;
-
+  a {
+    color: @color-black;
+    text-decoration: none;
+  }
   span {
     color: @color-primary;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
   }
 }
 
 .version {
   font-size: @font-size-12;
-  color: #aaa;
   text-align: center;
   margin-top: 1rem;
 }
 
 .login-image {
   flex: 1;
-  background: url('./../../../assets/side-login.jpg') no-repeat center center;
+  background: url("./../../../assets/side-login.jpg") no-repeat center center;
   background-size: cover;
   height: 100vh;
   display: none;
@@ -97,4 +99,12 @@
   margin-top: 8px;
   font-size: @font-size-12;
   text-align: center;
+}
+.btn-access{
+  font-weight: @font-weight-bold;
+  width: 80%;
+  align-self: center;
+}
+::ng-deep .mdc-button__label {
+  color: @color-white;
 }

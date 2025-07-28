@@ -110,6 +110,11 @@
     &:hover {
       background-color: transparent;
       color: @color-primary;
+
+    .menu-icon {
+      filter: brightness(0) saturate(100%) sepia(100%) hue-rotate(180deg) brightness(1.2);
+    }
+
     }
   }
   .arrow {
@@ -139,5 +144,11 @@
 }
 
 .action-btn {
+  align-self: center;
+    padding: 0 69px;
   margin-top: 2rem;
+  font-weight: @font-weight-bold;
+}
+::ng-deep .mdc-button__label {
+  color: @color-white;
 }
