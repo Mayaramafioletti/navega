@@ -11,7 +11,7 @@ import { ChartConfiguration, ChartOptions } from 'chart.js';
   styleUrls: ['./chart.component.less']
 })
 export class ChartComponent {
-   @Input() data: number[] = [];
+   @Input() data?: number[] = [] ;
   doughnutChartLabels: string[] = ['Contribuição mensal', 'Contribuição voluntária'];
   doughnutChartData: ChartConfiguration<'doughnut'>['data'] = {
     labels: this.doughnutChartLabels,

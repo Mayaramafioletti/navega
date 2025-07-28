@@ -40,11 +40,11 @@
 
     <main class="content">
       <div class="chart-section">
-        <app-chart *ngIf="dashboardData?.chartData" [data]="dashboardData.chartData"></app-chart>
+        <app-chart *ngIf="dashboardData?.chartData" [data]="dashboardData?.chartData"></app-chart>
       </div>
 
       <div class="cards-section" *ngIf="dashboardData?.cards?.length">
-        <app-cards *ngFor="let card of dashboardData.cards" [tipo]="card.tipo" [valor]="card.valor"
+        <app-cards *ngFor="let card of dashboardData?.cards" [tipo]="card.tipo" [valor]="card.valor"
           [percentual]="card.percentual">
         </app-cards>
       </div>
