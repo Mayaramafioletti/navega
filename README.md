@@ -2,6 +2,7 @@
 # 📊 Desafio Técnico - Navega (Angular 16 + Angular Material)
 
 Este projeto foi desenvolvido como parte de um desafio técnico. Ele apresenta uma aplicação Angular 16 com Angular Material que exibe um **gráfico**, mais algumas informações seguindo o layout fornecido no [figma](https://www.figma.com/design/XEjahNUOeCfe4wNMKEruMh/Prot%C3%B3tipo-Front-End?node-id=2-1219&t=EQUk96W7G3k9rwtX-0).
+É possivel acessar [AQUI](https://navega-omega.vercel.app/login)
 
 ## 🚀 Tecnologias Utilizadas
 
