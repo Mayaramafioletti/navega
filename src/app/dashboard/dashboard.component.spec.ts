@@ -26,9 +26,12 @@ interface DashboardData {
 }
 
 interface User {
-  avatar: string;
-  nome: string;
   email: string;
+  cpf: string;
+  password: string;
+  nome: string;
+  token: string;
+  avatar: string;
 }
 
 describe('DashboardComponent', () => {
@@ -42,6 +45,9 @@ describe('DashboardComponent', () => {
     avatar: 'assets/avatar.png',
     nome: 'Usuário Teste',
     email: 'teste@example.com',
+    cpf: '000.000.000-00',
+    password: '123456',
+    token: 'token',
   };
 
   const mockDashboardData: DashboardData = {

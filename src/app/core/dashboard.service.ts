@@ -1,11 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+export interface DashboardStatistics {
+  orders: number;
+  revenue: number;
+  activePlans: number;
+}
 
+export interface DashboardCard {
+  tipo: string;
+  valor: string;
+  percentual?: string;
+  cor: string;
+}
+
+export interface DashboardData {
+  statistics: DashboardStatistics;
+  cards: DashboardCard[];
+  chartData: number[];
+}
+
+export interface UserDashboardData {
+  name: string;
+  email: string;
+  avatar: string;
+  dashboard: DashboardData;
+}
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
-private mockUserDataByToken: { [token: string]: any } = {
+ private readonly mockUserDataByToken: Record<string, UserDashboardData> = {
   'mocked-jwt-token': {
     name: 'Adimin User',
     email: 'user@navega.com',
@@ -42,7 +66,6 @@ private mockUserDataByToken: { [token: string]: any } = {
     if (userData) {
       return of(userData.dashboard);
     } else {
-      // Usuário não autenticado ou token inválido
       return of(null);
     }
   }
