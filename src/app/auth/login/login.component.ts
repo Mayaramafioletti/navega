@@ -35,56 +35,60 @@ export class LoginComponent {
   });
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
-    this.form.get('cpfEmail')?.valueChanges.subscribe(value => {
-      if (!value) return;
+    this.setupCpfFormatting();
+  }
 
-      const isCpf = /^\d{0,11}$/.test(value.replace(/\D/g, ''));
-      if (isCpf) {
-        const formatted = this.formatCpf(value);
-        this.form.get('cpfEmail')?.setValue(formatted, { emitEvent: false });
-      }
+
+  onSubmit(): void {
+    this.loginError = false;
+
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    const { cpfEmail, password } = this.form.value;
+
+    this.authService.login(cpfEmail!, password!).subscribe({
+      next: (res) => {
+        res.success ? this.router.navigate(['/dashboard']) :     this.loginError = true;
+      },
+      error: () =>     this.loginError = true,
     });
   }
 
-
-  onSubmit() {
-    this.loginError = false;
-
-    if (this.form.valid) {
-      const { cpfEmail, password } = this.form.value;
-
-      this.authService.login(cpfEmail!, password!).subscribe({
-        next: (res) => {
-          if (res.success) {
-            this.router.navigate(['/dashboard']);
-          } else {
-            this.loginError = true;
-            console.log('Login inválido: exibindo erro');
-          }
-        },
-        error: () => {
-          this.loginError = true;
-        }
-      });
-    } else {
-      this.form.markAllAsTouched();
-    }
-  }
-
-  togglePasswordVisibility() {
+  togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
-  private formatCpf(value: string): string {
-    value = value.replace(/\D/g, '');
 
-    if (value.length <= 3) {
-      return value;
-    } else if (value.length <= 6) {
-      return value.replace(/(\d{3})(\d+)/, '$1.$2');
-    } else if (value.length <= 9) {
-      return value.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
-    } else {
-      return value.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+private setupCpfFormatting(): void {
+  const cpfEmailControl = this.form.get('cpfEmail');
+
+  cpfEmailControl?.valueChanges.subscribe((value) => {
+    if (!value) return;
+
+    const digitsOnly = value.replace(/\D/g, '');
+
+    if (digitsOnly.length > 0 && digitsOnly.length <= 11) {
+      const formatted = this.formatCpf(digitsOnly);
+      cpfEmailControl.setValue(formatted, { emitEvent: false });
     }
+  });
+}
+
+
+  private formatCpf(value: string): string {
+    const cpf = value.replace(/\D/g, '');
+
+    if (cpf.length <= 3) {
+      return cpf;
+    }
+    if (cpf.length <= 6) {
+      return cpf.replace(/(\d{3})(\d+)/, '$1.$2');
+    }
+    if (cpf.length <= 9) {
+      return cpf.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+    }
+    return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
   }
 }
